@@ -17,6 +17,7 @@ for more details.
 
 - https://github.com/kawanet/timed-storage
 - https://www.npmjs.com/package/timed-storage
+- https://www.npmjs.com/package/async-cache-queue
 
 ## MIT LICENSE
 

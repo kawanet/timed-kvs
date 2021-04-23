@@ -2,11 +2,9 @@
  * linked-storage.ts
  */
 
-import {TimedStorage as types} from "../types/timed-storage";
+import {TS} from "../types/timed-storage";
 
-type Envelope<T> = types.Envelope<T>;
-
-interface Item<T> extends Envelope<T> {
+interface Item<T> extends TS.Envelope<T> {
     key?: string;
     next?: Item<T>;
     deleted?: boolean;
@@ -17,12 +15,21 @@ export class LinkedStorage<T> {
     private items = {} as { [key: string]: Item<T> };
     private length: number = 0;
 
-    getItem(key: string): Envelope<T> {
-        const item = this.items[key];
-        if (item && !item.deleted) return item as Envelope<T>;
+    get(key: string): T {
+        const item = this.getItem(key);
+        if (item) return item.value;
     }
 
-    setItem(key: string, value: Envelope<T>): void {
+    set(key: string, value: T): void {
+        this.setItem(key, {value: value});
+    }
+
+    getItem(key: string): TS.Envelope<T> {
+        const item = this.items[key];
+        if (item && !item.deleted) return item as TS.Envelope<T>;
+    }
+
+    setItem(key: string, value: TS.Envelope<T>): void {
         const item = value as Item<T>;
 
         // remove duplicated item
@@ -54,7 +61,7 @@ export class LinkedStorage<T> {
 
         while (item) {
             if (0 >= size) {
-                this.truncate(item as Envelope<T>);
+                this.truncate(item as TS.Envelope<T>);
                 return;
             }
 
@@ -97,7 +104,7 @@ export class LinkedStorage<T> {
      * remove given item and rest of items
      */
 
-    truncate(value: Envelope<T>): void {
+    truncate(value: TS.Envelope<T>): void {
         let item = value as Item<T>;
 
         while (item) {

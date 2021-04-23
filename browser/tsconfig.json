@@ -1,18 +1,18 @@
 {
   "include": [
-    "./lib",
-    "./test"
+    "../lib"
   ],
   "compilerOptions": {
-    "module": "CommonJS",
+    "module": "AMD",
     "noImplicitAny": true,
     "noImplicitReturns": false,
     "noImplicitThis": true,
     "noUnusedLocals": true,
     "noUnusedParameters": false,
-    "removeComments": false,
+    "removeComments": true,
+    "outFile": "../build/timed-storage.amd.js",
     "skipLibCheck": true,
     "strictNullChecks": false,
-    "target": "ES2018"
+    "target": "ES5"
   }
 }

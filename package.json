@@ -20,7 +20,7 @@
   "files": [
     "LICENSE",
     "README.md",
-    "dist",
+    "dist/*.js",
     "lib/*.js",
     "types/*.d.ts"
   ],

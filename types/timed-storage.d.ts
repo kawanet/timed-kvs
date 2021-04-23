@@ -2,7 +2,7 @@
  * timed-storage.d.ts
  */
 
-export namespace TimedStorage {
+export namespace TS {
 
     export interface Envelope<T> {
         value: T;
@@ -14,18 +14,16 @@ export namespace TimedStorage {
     }
 }
 
-type Envelope<T> = TimedStorage.Envelope<T>;
-
 export class TimedStorage<T> {
-    constructor(options?: TimedStorage.Options);
+    constructor(options?: TS.Options);
 
     get(key: string): T;
 
-    getItem(key: string): Envelope<T> ;
+    getItem(key: string): TS.Envelope<T>;
 
     set(key: string, value: T): void;
 
-    setItem(key: string, value: Envelope<T>): void;
+    setItem(key: string, value: TS.Envelope<T>): void;
 
     delete(key: string): void;
 

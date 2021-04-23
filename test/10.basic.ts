@@ -4,10 +4,10 @@ import {strict as assert} from "assert";
 
 import {TimedStorage} from "../";
 
-const TESTNAME = __filename.replace(/^.*\//, "");
+const TITLE = __filename.split("/").pop();
 
-describe(TESTNAME, () => {
-    it("set() and get()", async () => {
+describe(TITLE, () => {
+    it("set() get()", async () => {
         const store = new TimedStorage<Promise<string>>();
         assert.deepEqual(await getArray(store), []);
 
@@ -82,6 +82,6 @@ describe(TESTNAME, () => {
     });
 });
 
-async function getArray<T = any>(store: TimedStorage<any>): Promise<T[]> {
+async function getArray<T>(store: TimedStorage<T>): Promise<T[]> {
     return Promise.all(store.values());
 }
