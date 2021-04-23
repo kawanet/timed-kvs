@@ -1,0 +1,47 @@
+{
+  "name": "timed-storage",
+  "description": "Lightweight asynchronous task queue with cache, timeout and throttle management",
+  "version": "0.2.0",
+  "author": "Yusuke Kawasaki <u-suke@kawa.net>",
+  "bugs": {
+    "url": "https://github.com/kawanet/timed-storage/issues"
+  },
+  "contributors": [
+    "Yusuke Kawasaki <u-suke@kawa.net>"
+  ],
+  "devDependencies": {
+    "@types/mocha": "^8.2.2",
+    "@types/node": "^14.14.41",
+    "browserify": "^17.0.0",
+    "mocha": "^8.3.2",
+    "terser": "^5.6.1",
+    "typescript": "^4.2.4"
+  },
+  "files": [
+    "LICENSE",
+    "README.md",
+    "dist",
+    "lib/*.js",
+    "types/*.d.ts"
+  ],
+  "homepage": "https://github.com/kawanet/timed-storage#readme",
+  "keywords": [
+    "key-value",
+    "kvs",
+    "timeout"
+  ],
+  "license": "MIT",
+  "main": "./lib/timed-storage.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kawanet/timed-storage.git"
+  },
+  "scripts": {
+    "build": "./node_modules/.bin/tsc -p . && make -C browser dist",
+    "build-browser": "make -C browser clean all",
+    "fixpack": "fixpack",
+    "mocha": "./node_modules/.bin/mocha -R spec test/*.js",
+    "test": "npm run mocha"
+  },
+  "typings": "./types/timed-storage.d.ts"
+}
