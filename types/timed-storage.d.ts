@@ -27,7 +27,7 @@ export class TimedStorage<T> {
 
     delete(key: string): void;
 
-    shrink(size?: number): void;
+    shrink(size: number): void;
 
     values(): T[];
 }
