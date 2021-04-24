@@ -1,8 +1,8 @@
 /**
- * timed-storage.d.ts
+ * timed-kvs.d.ts
  */
 
-export namespace TS {
+export namespace TKVS {
 
     export interface Envelope<T> {
         value: T;
@@ -14,16 +14,16 @@ export namespace TS {
     }
 }
 
-export class TimedStorage<T> {
-    constructor(options?: TS.Options);
+export class TimedKVS<T> {
+    constructor(options?: TKVS.Options);
 
     get(key: string): T;
 
-    getItem(key: string): TS.Envelope<T>;
+    getItem(key: string): TKVS.Envelope<T>;
 
     set(key: string, value: T): void;
 
-    setItem(key: string, value: TS.Envelope<T>): void;
+    setItem(key: string, value: TKVS.Envelope<T>): void;
 
     delete(key: string): void;
 

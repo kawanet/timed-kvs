@@ -1,10 +1,10 @@
 {
-  "name": "timed-storage",
+  "name": "timed-kvs",
   "description": "Lightweight Key-value storage with built-in TTL expiration management",
   "version": "0.2.0",
   "author": "Yusuke Kawasaki <u-suke@kawa.net>",
   "bugs": {
-    "url": "https://github.com/kawanet/timed-storage/issues"
+    "url": "https://github.com/kawanet/timed-kvs/issues"
   },
   "contributors": [
     "Yusuke Kawasaki <u-suke@kawa.net>"
@@ -24,19 +24,20 @@
     "lib/*.js",
     "types/*.d.ts"
   ],
-  "homepage": "https://github.com/kawanet/timed-storage#readme",
+  "homepage": "https://github.com/kawanet/timed-kvs#readme",
   "keywords": [
     "KVS",
     "TTL",
+    "cache",
     "expiration",
     "key-value",
     "timeout"
   ],
   "license": "MIT",
-  "main": "./lib/timed-storage.js",
+  "main": "./lib/timed-kvs.js",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/kawanet/timed-storage.git"
+    "url": "git+https://github.com/kawanet/timed-kvs.git"
   },
   "scripts": {
     "build": "./node_modules/.bin/tsc -p . && make -C browser dist",
@@ -45,5 +46,5 @@
     "mocha": "./node_modules/.bin/mocha -R spec test/*.js",
     "test": "npm run mocha"
   },
-  "typings": "./types/timed-storage.d.ts"
+  "typings": "./types/timed-kvs.d.ts"
 }

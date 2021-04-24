@@ -2,14 +2,14 @@
 
 import {strict as assert} from "assert";
 
-import {TimedStorage} from "../";
+import {TimedKVS} from "../";
 
 const TITLE = __filename.split("/").pop();
 const WAIT = (ms: number) => new Promise(resolve => setTimeout(() => resolve(ms), ms));
 
 describe(TITLE, () => {
     it("maxItems", async () => {
-        const store = new TimedStorage<string>({maxItems: 5});
+        const store = new TimedKVS<string>({maxItems: 5});
 
         let counter = 0;
         const cache = (key: string) => {

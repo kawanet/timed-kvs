@@ -2,14 +2,14 @@
 
 import {strict as assert} from "assert";
 
-import {TimedStorage} from "../";
+import {TimedKVS} from "../";
 
 const TITLE = __filename.split("/").pop();
 const WAIT = (ms: number) => new Promise(resolve => setTimeout(() => resolve(ms), ms));
 
 describe(TITLE, () => {
     it("expires", async () => {
-        const store = new TimedStorage<string>({expires: 100});
+        const store = new TimedKVS<string>({expires: 100});
 
         store.set("foo", "foo:1");
         assert.equal(store.get("foo"), "foo:1");

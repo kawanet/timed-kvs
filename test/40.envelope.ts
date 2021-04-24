@@ -2,13 +2,13 @@
 
 import {strict as assert} from "assert";
 
-import {TimedStorage} from "../";
+import {TimedKVS} from "../";
 
 const TITLE = __filename.split("/").pop();
 
 describe(TITLE, () => {
     it("setItem() getItem()", async () => {
-        const store = new TimedStorage<string>();
+        const store = new TimedKVS<string>();
 
         assert.equal(typeof store.getItem("foo"), "undefined");
 

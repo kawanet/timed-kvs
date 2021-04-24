@@ -2,13 +2,13 @@
 
 import {strict as assert} from "assert";
 
-import {TimedStorage} from "../";
+import {TimedKVS} from "../";
 
 const TITLE = __filename.split("/").pop();
 
 describe(TITLE, () => {
     it("set() get()", async () => {
-        const store = new TimedStorage<Promise<string>>();
+        const store = new TimedKVS<Promise<string>>();
         assert.deepEqual(await getArray(store), []);
 
         store.set("foo", Promise.resolve("FOO"));
@@ -24,7 +24,7 @@ describe(TITLE, () => {
     });
 
     it("shrink()", async () => {
-        const store = new TimedStorage<Promise<number>>();
+        const store = new TimedKVS<Promise<number>>();
 
         store.set("1", Promise.resolve(1));
         store.set("2", Promise.resolve(2));
@@ -50,7 +50,7 @@ describe(TITLE, () => {
     });
 
     it("delete()", async () => {
-        const store = new TimedStorage<Promise<number>>();
+        const store = new TimedKVS<Promise<number>>();
 
         store.set("1", Promise.resolve(1));
         store.set("2", Promise.resolve(2));
@@ -82,6 +82,6 @@ describe(TITLE, () => {
     });
 });
 
-async function getArray<T>(store: TimedStorage<T>): Promise<T[]> {
+async function getArray<T>(store: TimedKVS<T>): Promise<T[]> {
     return Promise.all(store.values());
 }

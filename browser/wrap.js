@@ -1,4 +1,4 @@
-var TimedStorage = (function(load, defined, main, className) {
+var TimedKVS = (function(load, defined, main, className) {
   var require = defined.require = function(name) {return defined[name]};
   if ("undefined" != typeof exports) defined[main] = exports;
   load(function(name, deps, fn) {
@@ -8,4 +8,4 @@ var TimedStorage = (function(load, defined, main, className) {
   return defined[main][className];
 })(function(define) {
   // AMD
-}, {}, "timed-storage", "TimedStorage"); // END
+}, {}, "timed-kvs", "TimedKVS"); // END

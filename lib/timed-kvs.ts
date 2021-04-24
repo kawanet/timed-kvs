@@ -1,11 +1,11 @@
 /**
- * timed-storage.ts
+ * timed-kvs.ts
  */
 
-import {TimedStorage as ITimeStorage, TS} from "../types/timed-storage";
-import {LinkedStorage} from "./linked-storage";
+import {TimedKVS as ITimedKVS, TKVS} from "../types/timed-kvs";
+import {LinkedKVS} from "./linked-kvs";
 
-interface Item<T> extends TS.Envelope<T> {
+interface Item<T> extends TKVS.Envelope<T> {
     ttl?: number;
 }
 
@@ -13,19 +13,19 @@ interface Item<T> extends TS.Envelope<T> {
  * Storage with TTL for each entries
  */
 
-export class TimedStorage<T> extends LinkedStorage<T> implements ITimeStorage<T> {
+export class TimedKVS<T> extends LinkedKVS<T> implements ITimedKVS<T> {
     private expires: number;
     private maxItems: number;
     private gcTimeout: any;
 
-    constructor(options?: TS.Options) {
+    constructor(options?: TKVS.Options) {
         super();
         const {expires, maxItems} = options || {};
         this.expires = (expires > 0) && +expires || 0;
         this.maxItems = (maxItems > 0) && +maxItems || 0;
     }
 
-    getItem(key: string): TS.Envelope<T> {
+    getItem(key: string): TKVS.Envelope<T> {
         const {expires} = this;
         const item = super.getItem(key);
         if (!item) return;
@@ -39,10 +39,10 @@ export class TimedStorage<T> extends LinkedStorage<T> implements ITimeStorage<T>
             }
         }
 
-        return item as TS.Envelope<T>;
+        return item as TKVS.Envelope<T>;
     }
 
-    setItem(key: string, item: TS.Envelope<T>): void {
+    setItem(key: string, item: TKVS.Envelope<T>): void {
         const {expires, maxItems} = this;
 
         if (expires) {

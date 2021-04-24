@@ -10,7 +10,7 @@
     "noUnusedLocals": true,
     "noUnusedParameters": false,
     "removeComments": true,
-    "outFile": "../build/timed-storage.amd.js",
+    "outFile": "../build/timed-kvs.amd.js",
     "skipLibCheck": true,
     "strictNullChecks": false,
     "target": "ES5"

@@ -1,16 +1,16 @@
-# timed-storage
+# timed-kvs
 
 Lightweight Key-value storage with built-in TTL expiration management
 
-[![Node.js CI](https://github.com/kawanet/timed-storage/workflows/Node.js%20CI/badge.svg?branch=main)](https://github.com/kawanet/timed-storage/actions/)
-[![npm version](https://badge.fury.io/js/timed-storage.svg)](https://www.npmjs.com/package/timed-storage)
+[![Node.js CI](https://github.com/kawanet/timed-kvs/workflows/Node.js%20CI/badge.svg?branch=main)](https://github.com/kawanet/timed-kvs/actions/)
+[![npm version](https://badge.fury.io/js/timed-kvs.svg)](https://www.npmjs.com/package/timed-kvs)
 
 ## SYNOPSIS
 
 ```js
-const {TimedStorage} = require("timed-storage");
+const {TimedKVS} = require("timed-kvs");
 
-const store = new TimedStorage({expires: 60000, maxItems: 1000});
+const store = new TimedKVS({expires: 60000, maxItems: 1000});
 
 store.set("foo", "FOO");
 
@@ -20,13 +20,13 @@ store.delete("foo");
 ```
 
 See TypeScript declaration
-[timed-storage.d.ts](https://github.com/kawanet/timed-storage/blob/main/types/timed-storage.d.ts)
+[timed-kvs.d.ts](https://github.com/kawanet/timed-kvs/blob/main/types/timed-kvs.d.ts)
 for more details.
 
 ## LINKS
 
-- https://github.com/kawanet/timed-storage
-- https://www.npmjs.com/package/timed-storage
+- https://github.com/kawanet/timed-kvs
+- https://www.npmjs.com/package/timed-kvs
 - https://www.npmjs.com/package/async-cache-queue
 
 ## MIT LICENSE

@@ -1,16 +1,16 @@
 /**
- * linked-storage.ts
+ * linked-kvs.ts
  */
 
-import {TS} from "../types/timed-storage";
+import {TKVS} from "../types/timed-kvs";
 
-interface Item<T> extends TS.Envelope<T> {
+interface Item<T> extends TKVS.Envelope<T> {
     key?: string;
     next?: Item<T>;
     deleted?: boolean;
 }
 
-export class LinkedStorage<T> {
+export class LinkedKVS<T> {
     private latest: Item<T> = null;
     private items = {} as { [key: string]: Item<T> };
     private length: number = 0;
@@ -24,12 +24,12 @@ export class LinkedStorage<T> {
         this.setItem(key, {value: value});
     }
 
-    getItem(key: string): TS.Envelope<T> {
+    getItem(key: string): TKVS.Envelope<T> {
         const item = this.items[key];
-        if (item && !item.deleted) return item as TS.Envelope<T>;
+        if (item && !item.deleted) return item as TKVS.Envelope<T>;
     }
 
-    setItem(key: string, value: TS.Envelope<T>): void {
+    setItem(key: string, value: TKVS.Envelope<T>): void {
         const item = value as Item<T>;
 
         // remove duplicated item
@@ -61,7 +61,7 @@ export class LinkedStorage<T> {
 
         while (item) {
             if (0 >= size) {
-                this.truncate(item as TS.Envelope<T>);
+                this.truncate(item as TKVS.Envelope<T>);
                 return;
             }
 
@@ -104,7 +104,7 @@ export class LinkedStorage<T> {
      * remove given item and rest of items
      */
 
-    truncate(value: TS.Envelope<T>): void {
+    truncate(value: TKVS.Envelope<T>): void {
         let item = value as Item<T>;
 
         while (item) {
