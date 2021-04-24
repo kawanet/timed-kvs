@@ -9,6 +9,14 @@ Lightweight Key-value storage with built-in TTL expiration management
 
 ```js
 const {TimedStorage} = require("timed-storage");
+
+const store = new TimedStorage({expires: 60000, maxItems: 1000});
+
+store.set("foo", "FOO");
+
+store.get("foo"); // => "FOO"
+
+store.delete("foo");
 ```
 
 See TypeScript declaration
