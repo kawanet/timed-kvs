@@ -1,6 +1,6 @@
 {
   "name": "timed-storage",
-  "description": "Lightweight asynchronous task queue with cache, timeout and throttle management",
+  "description": "Lightweight Key-value storage with built-in TTL expiration management",
   "version": "0.2.0",
   "author": "Yusuke Kawasaki <u-suke@kawa.net>",
   "bugs": {
@@ -26,8 +26,10 @@
   ],
   "homepage": "https://github.com/kawanet/timed-storage#readme",
   "keywords": [
+    "KVS",
+    "TTL",
+    "expiration",
     "key-value",
-    "kvs",
     "timeout"
   ],
   "license": "MIT",

@@ -1,5 +1,7 @@
 # timed-storage
 
+Lightweight Key-value storage with built-in TTL expiration management
+
 [![Node.js CI](https://github.com/kawanet/timed-storage/workflows/Node.js%20CI/badge.svg?branch=main)](https://github.com/kawanet/timed-storage/actions/)
 [![npm version](https://badge.fury.io/js/timed-storage.svg)](https://www.npmjs.com/package/timed-storage)
 
