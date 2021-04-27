@@ -21,6 +21,7 @@
     "LICENSE",
     "README.md",
     "dist/*.js",
+    "browser/import.js",
     "lib/*.js",
     "types/*.d.ts"
   ],

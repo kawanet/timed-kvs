@@ -22,7 +22,7 @@ all: dist ../build/test.js
 	../node_modules/.bin/tsc -p ..
 	mkdir -p ../build/test
 	cp -p ../test/[1-7][0-9].*.js ../build/test
-	perl -i -pe 's#require\("../(lib/timed-kvs)?"\)#require("../../dist/timed-kvs.min")#' ../build/test/*.js
+	perl -i -pe 's#require\("../(lib/timed-kvs)?"\)#require("../../browser/import")#' ../build/test/*.js
 	../node_modules/.bin/browserify -o $@ ../build/test/*.js
 
 dist: ../dist/timed-kvs.min.js

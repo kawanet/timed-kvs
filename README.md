@@ -23,6 +23,23 @@ See TypeScript declaration
 [timed-kvs.d.ts](https://github.com/kawanet/timed-kvs/blob/main/types/timed-kvs.d.ts)
 for more details.
 
+## BROWSERS
+
+Just 2.5KB minified build available for Web browsers.
+
+- https://raw.githubusercontent.com/kawanet/timed-kvs/main/dist/timed-kvs.min.js
+- https://cdn.jsdelivr.net/npm/timed-kvs/dist/timed-kvs.min.js
+
+```html
+<script src="https://cdn.jsdelivr.net/npm/timed-kvs/dist/timed-kvs.min.js"></script>
+<script>
+  const store = new TimedKVS({expires: 60000, maxItems: 1000});
+  store.set("foo", "FOO");
+  store.get("foo"); // => "FOO"
+  store.delete("foo");
+</script>
+```
+
 ## LINKS
 
 - https://github.com/kawanet/timed-kvs
