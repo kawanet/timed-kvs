@@ -84,7 +84,6 @@ export class LinkedKVS<T> {
 
     private _delete(item: Item<T>): void {
         if (!item) return;
-        let prev: Item<T>;
 
         if (!item.deleted) {
             delete this.items[item.key];
@@ -93,10 +92,10 @@ export class LinkedKVS<T> {
             item.deleted = true;
         }
 
-        while (item && item.deleted) {
-            if (prev) prev.next = item.next; // shortcut link
-            prev = item;
-            item = item.next; // next item
+        // shortcut link
+        let next = item.next;
+        while (next && next.deleted) {
+            next = item.next = next.next;
         }
     }
 
@@ -104,7 +103,7 @@ export class LinkedKVS<T> {
      * remove given item and rest of items
      */
 
-    truncate(value: TKVS.Envelope<T>): void {
+    protected truncate(value: TKVS.Envelope<T>): void {
         let item = value as Item<T>;
 
         while (item) {

@@ -34,7 +34,7 @@ export class TimedKVS<T> extends LinkedKVS<T> implements ITimedKVS<T> {
             const now = Date.now();
             // if the cached item is expired, remove rest of super as expired as well.
             if (now > (item as Item<T>).ttl) {
-                super.truncate(item);
+                this.truncate(item);
                 return;
             }
         }
