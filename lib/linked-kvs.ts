@@ -56,7 +56,7 @@ export class LinkedKVS<T> {
      * it costs O(n) as parsing whole of items
      */
 
-    shrink(size: number): void {
+    protected shrink(size: number): void {
         let item = this.latest;
 
         while (item) {

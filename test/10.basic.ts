@@ -23,32 +23,6 @@ describe(TITLE, () => {
         assert.deepEqual(await getArray(store), ["FOO", "BUZ-2"]);
     });
 
-    it("shrink()", async () => {
-        const store = new TimedKVS<Promise<number>>();
-
-        store.set("1", Promise.resolve(1));
-        store.set("2", Promise.resolve(2));
-        store.set("3", Promise.resolve(3));
-        store.set("4", Promise.resolve(4));
-        store.set("5", Promise.resolve(5));
-
-        assert.equal(await store.get("1"), 1);
-        assert.equal(await store.get("2"), 2);
-        assert.equal(await store.get("3"), 3);
-        assert.equal(await store.get("4"), 4);
-        assert.equal(await store.get("5"), 5);
-        assert.deepEqual(await getArray(store), [1, 2, 3, 4, 5]);
-
-        store.shrink(3);
-
-        assert.equal(await store.get("1"), undefined);
-        assert.equal(await store.get("2"), undefined);
-        assert.equal(await store.get("3"), 3);
-        assert.equal(await store.get("4"), 4);
-        assert.equal(await store.get("5"), 5);
-        assert.deepEqual(await getArray(store), [3, 4, 5]);
-    });
-
     it("delete()", async () => {
         const store = new TimedKVS<Promise<number>>();
 

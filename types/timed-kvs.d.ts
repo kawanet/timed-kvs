@@ -30,7 +30,5 @@ export class TimedKVS<T> {
 
     delete(key: string): void;
 
-    shrink(size: number): void;
-
     values(): T[];
 }
