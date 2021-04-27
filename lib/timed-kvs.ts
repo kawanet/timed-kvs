@@ -55,11 +55,13 @@ export class TimedKVS<T> extends LinkedKVS<T> implements ITimedKVS<T> {
         if (maxItems) {
             if (this.gcTimeout || maxItems >= this.size()) return;
 
+            const gcDelay = Math.min(maxItems, 1000);
+
             // garbage collection in background
             this.gcTimeout = setTimeout(() => {
                 this.shrink(maxItems);
                 delete this.gcTimeout;
-            }, 1000);
+            }, gcDelay);
         }
     }
 }

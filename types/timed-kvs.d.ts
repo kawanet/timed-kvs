@@ -9,7 +9,10 @@ export namespace TKVS {
     }
 
     interface Options {
+        // TTL in milliseconds
         expires?: number;
+
+        // maximum number of items stored in the storage
         maxItems?: number;
     }
 }

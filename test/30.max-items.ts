@@ -38,7 +38,7 @@ describe(TITLE, () => {
         assert.equal(cache("corge"), "corge:6"); // cached
 
         // wait a moment for garbage collection completed
-        await WAIT(1001);
+        await WAIT(100);
 
         // this refreshes "foo" and removes "bar" then
         assert.equal(cache("foo"), "foo:7"); // refreshed
