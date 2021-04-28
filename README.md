@@ -25,7 +25,7 @@ for more details.
 
 ## BROWSERS
 
-Just 2.5KB minified build available for Web browsers.
+Less than 3KB minified build available for Web browsers.
 
 - https://raw.githubusercontent.com/kawanet/timed-kvs/main/dist/timed-kvs.min.js
 - https://cdn.jsdelivr.net/npm/timed-kvs/dist/timed-kvs.min.js
