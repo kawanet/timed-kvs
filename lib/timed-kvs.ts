@@ -17,6 +17,7 @@ export class TimedKVS<T> extends LinkedKVS<T> implements ITimedKVS<T> {
     private expires: number;
     private maxItems: number;
     private gcTimeout: any;
+    private firstKey: string;
 
     constructor(options?: TKVS.Options) {
         super();
@@ -32,9 +33,9 @@ export class TimedKVS<T> extends LinkedKVS<T> implements ITimedKVS<T> {
 
         if (expires) {
             const now = Date.now();
-            // if the cached item is expired, remove rest of super as expired as well.
+            // if the cached item is expired, remove rest of items as expired as well.
             if (now > (item as Item<T>).ttl) {
-                super.truncate(item);
+                this.truncate(item);
                 return;
             }
         }
@@ -46,6 +47,14 @@ export class TimedKVS<T> extends LinkedKVS<T> implements ITimedKVS<T> {
         const {expires, maxItems} = this;
 
         if (expires) {
+            if (this.firstKey) {
+                // check the first item expired or not
+                const expired = !this.getItem(this.firstKey);
+                if (expired) this.firstKey = undefined;
+            } else {
+                this.firstKey = key;
+            }
+
             const now = Date.now();
             (item as Item<T>).ttl = now + expires;
         }
@@ -55,11 +64,13 @@ export class TimedKVS<T> extends LinkedKVS<T> implements ITimedKVS<T> {
         if (maxItems) {
             if (this.gcTimeout || maxItems >= this.size()) return;
 
+            const gcDelay = Math.min(maxItems, 1000);
+
             // garbage collection in background
             this.gcTimeout = setTimeout(() => {
                 this.shrink(maxItems);
                 delete this.gcTimeout;
-            }, 1000);
+            }, gcDelay);
         }
     }
 }

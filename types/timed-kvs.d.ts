@@ -9,7 +9,10 @@ export namespace TKVS {
     }
 
     interface Options {
+        // TTL in milliseconds
         expires?: number;
+
+        // maximum number of items stored in the storage
         maxItems?: number;
     }
 }
@@ -27,7 +30,7 @@ export class TimedKVS<T> {
 
     delete(key: string): void;
 
-    shrink(size: number): void;
+    keys(): string[];
 
     values(): T[];
 }

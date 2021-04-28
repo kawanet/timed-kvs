@@ -47,7 +47,7 @@ export class LinkedKVS<T> {
         this.latest = item;
     }
 
-    size(): number {
+    protected size(): number {
         return this.length;
     }
 
@@ -56,7 +56,7 @@ export class LinkedKVS<T> {
      * it costs O(n) as parsing whole of items
      */
 
-    shrink(size: number): void {
+    protected shrink(size: number): void {
         let item = this.latest;
 
         while (item) {
@@ -84,7 +84,6 @@ export class LinkedKVS<T> {
 
     private _delete(item: Item<T>): void {
         if (!item) return;
-        let prev: Item<T>;
 
         if (!item.deleted) {
             delete this.items[item.key];
@@ -93,10 +92,10 @@ export class LinkedKVS<T> {
             item.deleted = true;
         }
 
-        while (item && item.deleted) {
-            if (prev) prev.next = item.next; // shortcut link
-            prev = item;
-            item = item.next; // next item
+        // shortcut link
+        let next = item.next;
+        while (next && next.deleted) {
+            next = item.next = next.next;
         }
     }
 
@@ -104,7 +103,7 @@ export class LinkedKVS<T> {
      * remove given item and rest of items
      */
 
-    truncate(value: TKVS.Envelope<T>): void {
+    protected truncate(value: TKVS.Envelope<T>): void {
         let item = value as Item<T>;
 
         while (item) {
@@ -114,18 +113,37 @@ export class LinkedKVS<T> {
     }
 
     /**
-     * return an array containing all the elements in proper sequence
+     * return an array containing all items in proper sequence
      */
 
-    values(): T[] {
-        const array: T[] = [];
+    private all(): TKVS.Envelope<T>[] {
+        const array = [] as TKVS.Envelope<T>[];
 
         let item = this.latest;
         while (item) {
-            if (!item.deleted) array.push(item.value);
+            if (!item.deleted) {
+                const it = this.getItem(item.key);
+                if (it) array.push(it);
+            }
             item = item.next;
         }
 
         return array.reverse();
+    }
+
+    /**
+     * return an array containing all keys in proper sequence
+     */
+
+    keys(): string[] {
+        return this.all().map((item: Item<T>) => item.key);
+    }
+
+    /**
+     * return an array containing all values in proper sequence
+     */
+
+    values(): T[] {
+        return this.all().map(item => item.value);
     }
 }
