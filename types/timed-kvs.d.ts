@@ -30,5 +30,7 @@ export class TimedKVS<T> {
 
     delete(key: string): void;
 
+    keys(): string[];
+
     values(): T[];
 }
