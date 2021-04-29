@@ -20,10 +20,8 @@ all: dist ../build/test.js
 # build/test/*.js uses ES6
 ../build/test.js: ../dist/timed-kvs.min.js ../test/*.ts
 	../node_modules/.bin/tsc -p ..
-	mkdir -p ../build/test
-	cp -p ../test/[1-7][0-9].*.js ../build/test
-	perl -i -pe 's#require\("../(lib/timed-kvs)?"\)#require("../../browser/import")#' ../build/test/*.js
-	../node_modules/.bin/browserify -o $@ ../build/test/*.js
+	../node_modules/.bin/browserify -o $@ ../test/*.js \
+		-t [ browserify-sed 's#require\("../(lib/timed-kvs)?"\)#require("../browser/import")#' ]
 
 dist: ../dist/timed-kvs.min.js
 
