@@ -2,7 +2,7 @@
 
 all: dist ../build/test.js
 
-# dist/*.min.js uses ES5
+# dist/*.min.js uses ES5 minified
 ../dist/timed-kvs.min.js: ../build/timed-kvs.bundle.js
 	mkdir -p ../dist
 	../node_modules/.bin/terser -c -m -o $@ $<
@@ -14,10 +14,11 @@ all: dist ../build/test.js
 	perl -i -pe 's#^ *("use strict"|Object.defineProperty|exports.*= void 0)#// $$&#' $@
 	perl -i -pe 's#_super\.prototype\.#__super.#g; s#function \(_super\) \{#$$& var __super = _super.prototype;#' $@
 
+# build/*.amd.js uses ES5 with AMD
 ../build/timed-kvs.amd.js: ../lib/*.ts
 	../node_modules/.bin/tsc -p .
 
-# build/test/*.js uses ES6
+# test/*.js uses ES6 with CommonJS
 ../build/test.js: ../dist/timed-kvs.min.js ../test/*.ts
 	../node_modules/.bin/tsc -p ..
 	../node_modules/.bin/browserify -o $@ ../test/*.js \
