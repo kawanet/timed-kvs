@@ -4,7 +4,7 @@
 
 export namespace TKVS {
 
-    export interface Envelope<T> {
+    interface Envelope<T> {
         value: T;
     }
 
