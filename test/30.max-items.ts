@@ -41,11 +41,14 @@ describe(TITLE, () => {
         await WAIT(100);
 
         // this refreshes "foo" and removes "bar" then
+        assert.equal(store.get("foo"), undefined); // removed
         assert.equal(cache("foo"), "foo:7"); // refreshed
         assert.equal(cache("foo"), "foo:7"); // cached
 
-        // assert.equal(COUNT("bar"), "bar:8"); // removed
-        assert.equal(cache("buz"), "buz:3");
+        // wait a moment for garbage collection completed
+        await WAIT(100);
+
+        assert.equal(store.get("bar"), undefined); // removed
 
         assert.equal(cache("buz"), "buz:3");
         assert.equal(cache("qux"), "qux:4");
