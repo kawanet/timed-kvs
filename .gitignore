@@ -6,7 +6,9 @@
 .idea/
 .vscode/
 build/
+dist/**/*.cjs
 dist/**/*.js
+dist/**/*.mjs
 lib/**/*.js
 node_modules/
 npm-debug.log*
