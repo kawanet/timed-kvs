@@ -1,16 +1,16 @@
 {
   "include": [
-    "../lib"
+    "./lib"
   ],
   "compilerOptions": {
-    "module": "AMD",
+    "module": "es2020",
     "noImplicitAny": true,
     "noImplicitReturns": false,
     "noImplicitThis": true,
     "noUnusedLocals": true,
     "noUnusedParameters": false,
-    "removeComments": true,
-    "outFile": "../build/timed-kvs.amd.js",
+    "removeComments": false,
+    "outDir": "./build/es5/",
     "skipLibCheck": true,
     "strictNullChecks": false,
     "target": "ES5"

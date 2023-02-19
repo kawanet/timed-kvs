@@ -4,6 +4,7 @@ Lightweight Key-value storage with built-in TTL expiration management
 
 [![Node.js CI](https://github.com/kawanet/timed-kvs/workflows/Node.js%20CI/badge.svg?branch=main)](https://github.com/kawanet/timed-kvs/actions/)
 [![npm version](https://badge.fury.io/js/timed-kvs.svg)](https://www.npmjs.com/package/timed-kvs)
+[![gzip size](https://img.badgesize.io/https://unpkg.com/timed-kvs/dist/timed-kvs.min.js?compression=gzip)](https://unpkg.com/timed-kvs/dist/timed-kvs.min.js)
 
 ## SYNOPSIS
 
@@ -27,7 +28,6 @@ for more details.
 
 Less than 3KB minified build available for Web browsers.
 
-- https://raw.githubusercontent.com/kawanet/timed-kvs/main/dist/timed-kvs.min.js
 - https://cdn.jsdelivr.net/npm/timed-kvs/dist/timed-kvs.min.js
 
 ```html
@@ -48,7 +48,7 @@ Less than 3KB minified build available for Web browsers.
 
 ## MIT LICENSE
 
-Copyright (c) 2020-2021 Yusuke Kawasaki
+Copyright (c) 2020-2023 Yusuke Kawasaki
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated
 documentation files (the "Software"), to deal in the Software without restriction, including without limitation the
