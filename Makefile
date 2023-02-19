@@ -44,7 +44,9 @@ build/esm/%.js: lib/%.ts
 clean:
 	/bin/rm -fr $(ALL) build/es5/ build/esm/
 
-test: build/test.js
-	open browser/test.html
+test: all
+	./node_modules/.bin/mocha test/*.js
+	node -e 'import("./dist/timed-kvs.mjs").then(x => new x.TimedKVS().get())'
+	node -e 'const {TimedKVS} = require("./dist/timed-kvs.min.js"); new TimedKVS().get()'
 
 .PHONY: all clean test

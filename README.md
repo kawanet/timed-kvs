@@ -24,6 +24,12 @@ See TypeScript declaration
 [timed-kvs.d.ts](https://github.com/kawanet/timed-kvs/blob/main/types/timed-kvs.d.ts)
 for more details.
 
+## ES MODULE
+
+```js
+import {TimedKVS} from "timed-kvs";
+```
+
 ## BROWSERS
 
 Less than 3KB minified build available for Web browsers.
