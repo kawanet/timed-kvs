@@ -9,7 +9,7 @@ Lightweight Key-value storage with built-in TTL expiration management
 ## SYNOPSIS
 
 ```js
-const {TimedKVS} = require("timed-kvs");
+import {TimedKVS} from "timed-kvs";
 
 const store = new TimedKVS({expires: 60000, maxItems: 1000});
 
@@ -24,16 +24,18 @@ See TypeScript declaration
 [timed-kvs.d.ts](https://github.com/kawanet/timed-kvs/blob/main/types/timed-kvs.d.ts)
 for more details.
 
-## ES MODULE
+## CJS
+
+- Both ES Modules and CommonJS supported.
 
 ```js
-import {TimedKVS} from "timed-kvs";
+const {TimedKVS} = require("timed-kvs");
 ```
 
-## BROWSERS
+## WEB BROWSERS
 
-Less than 3KB minified build available for Web browsers.
-
+- The minified build of the library is also available for Web browsers via
+[jsDelivr CDN](https://www.jsdelivr.com/package/npm/timed-kvs).
 - https://cdn.jsdelivr.net/npm/timed-kvs/dist/timed-kvs.min.js
 
 ```html
