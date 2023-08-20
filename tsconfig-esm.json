@@ -13,6 +13,6 @@
     "outDir": "./build/esm/",
     "skipLibCheck": true,
     "strictNullChecks": false,
-    "target": "es2020"
+    "target": "ES2021"
   }
 }
