@@ -20,8 +20,13 @@
     "typescript": "^5.1.6"
   },
   "exports": {
-    "require": "./lib/timed-kvs.js",
-    "import": "./dist/timed-kvs.mjs"
+    ".": {
+      "require": "./lib/timed-kvs.js",
+      "import": {
+        "default": "./dist/timed-kvs.mjs",
+        "types": "./types/timed-kvs.d.ts"
+      }
+    }
   },
   "files": [
     "LICENSE",
