@@ -1,7 +1,7 @@
 {
   "name": "timed-kvs",
   "description": "Lightweight Key-value storage with built-in TTL expiration management",
-  "version": "0.3.6",
+  "version": "0.3.7",
   "author": "Yusuke Kawasaki <u-suke@kawa.net>",
   "bugs": {
     "url": "https://github.com/kawanet/timed-kvs/issues"
@@ -23,8 +23,8 @@
     ".": {
       "require": "./lib/timed-kvs.js",
       "import": {
-        "default": "./dist/timed-kvs.mjs",
-        "types": "./types/timed-kvs.d.ts"
+        "types": "./types/timed-kvs.d.ts",
+        "default": "./dist/timed-kvs.mjs"
       }
     }
   },
